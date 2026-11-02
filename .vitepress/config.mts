@@ -11,15 +11,15 @@ export default defineConfig({
   base,
   lang: "ru-RU",
   title: "Hooba",
-  titleTemplate: ":title — Hooba для владельцев",
-  description: "Как поднять свой сервер Hooba и управлять сообществом",
+  titleTemplate: ":title — для владельцев сервера Hooba",
+  description: "Документация для владельцев сервера Hooba: как поднять свой сервер и управлять сообществом",
   cleanUrls: true,
   lastUpdated: true,
-  head: [["link", { rel: "icon", type: "image/png", href: `${base}hooba-favicon.png` }]],
+  head: [["link", { rel: "icon", type: "image/png", href: `${base}hooba-favicon.png?v=2` }]],
 
   themeConfig: {
-    logo: "/hooba-logo-mark-tile.webp",
-    siteTitle: "Hooba · владельцам",
+    logo: "/hooba-favicon-transparent.png",
+    siteTitle: "Hooba · сервер",
 
     nav: [
       { text: "Установка", link: "/start/requirements", activeMatch: "/start/" },

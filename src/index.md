@@ -1,13 +1,14 @@
 ---
 layout: home
-title: Документация для владельцев
+title: Документация для владельцев сервера Hooba
+titleTemplate: false
 
 hero:
   name: Свой сервер Hooba
   text: Голос, чат и демонстрация экрана для вашего сообщества
-  tagline: Как поднять сервер одной командой, держать его в порядке и управлять сообществом.
+  tagline: Документация для владельцев сервера Hooba — как поднять сервер одной командой, держать его в порядке и управлять сообществом.
   image:
-    src: /hooba-logo-mark-tile.webp
+    src: /hooba-favicon-transparent.png
     alt: Hooba
   actions:
     - theme: brand
