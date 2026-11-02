@@ -1,3 +1,10 @@
+---
+prev: false
+next:
+  text: Первый вход и владелец
+  link: /start/first-setup
+---
+
 # Установка
 
 ## Одна команда
@@ -12,6 +19,10 @@ bash <(curl -Ls https://raw.githubusercontent.com/blackpiest/hooba-app/main/inst
 
 ::: tip curl: command not found
 Сначала выполните `apt update && apt install -y curl`, затем команду установки ещё раз.
+:::
+
+::: info Первый раз ставите сервер?
+Проверьте, что VPS подходит и порты открыты, — [Что нужно](/start/requirements). Как попасть в терминал сервера — [Подключение к серверу](/start/ssh).
 :::
 
 ## Что спросит установщик

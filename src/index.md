@@ -13,7 +13,7 @@ hero:
   actions:
     - theme: brand
       text: Установить
-      link: /start/requirements
+      link: /start/install
     - theme: alt
       text: Что-то сломалось
       link: /server/troubleshooting
@@ -39,3 +39,14 @@ features:
     link: /community/moderation
     linkText: Модерация
 ---
+
+## Установка одной командой
+
+Подключитесь к своему VPS ([как](/start/ssh)) и выполните:
+
+```bash
+bash <(curl -Ls https://raw.githubusercontent.com/blackpiest/hooba-app/main/install.sh)
+```
+
+Скрипт сам поставит всё нужное, выпустит сертификат и запустит сервер. Подробно — в разделе [Установка](/start/install), требования к серверу и порты — в [Что нужно](/start/requirements).
+

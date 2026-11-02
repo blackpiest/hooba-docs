@@ -22,7 +22,7 @@ export default defineConfig({
     siteTitle: "Hooba · сервер",
 
     nav: [
-      { text: "Установка", link: "/start/requirements", activeMatch: "/start/" },
+      { text: "Установка", link: "/start/install", activeMatch: "/start/" },
       { text: "Обслуживание", link: "/server/hooba-command", activeMatch: "/server/" },
       { text: "Сообщество", link: "/community/admin-panel", activeMatch: "/community/" },
       { text: "Код сервера", link: APP_REPO },
@@ -32,9 +32,9 @@ export default defineConfig({
       {
         text: "Установка",
         items: [
+          { text: "Установка", link: "/start/install" },
           { text: "Что нужно", link: "/start/requirements" },
           { text: "Подключение к серверу", link: "/start/ssh" },
-          { text: "Установка", link: "/start/install" },
           { text: "Первый вход и владелец", link: "/start/first-setup" },
         ],
       },
