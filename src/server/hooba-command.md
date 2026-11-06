@@ -55,6 +55,7 @@ hooba
 | `hooba rollback` | Вернуть версию до последнего обновления |
 | `hooba logs [сервис]` | Журнал: `backend` — сервер, `web` — сайт, `postgres` — база, `coturn` — голос. Выход — Ctrl+C |
 | `hooba validate` | Проверить, что сервер отвечает |
+| `hooba voice-check` | Найти, почему не работает голос: контейнеры, адреса, доходят ли пакеты до сервера. Собирает отчёт без паролей в `/opt/hooba/logs/voice-check-report.txt` |
 | `hooba backup` | Резервная копия базы, настроек и картинок — [подробнее](/server/backups) |
 | `hooba restore [файл]` | Восстановить из копии |
 | `hooba uploads-quota [ГиБ]` | Место под картинки чата — [подробнее](/server/storage) |
