@@ -63,6 +63,41 @@ During installation: `Порт 80 занят программой …` ("Port 80
 - **The build fails** with `Killed`, `exit code 137` or `JavaScript heap out of memory` — there wasn't enough memory. Turn on swap: run `hooba install` again — on a server with less than 2 GB it offers to create a swap file. Or get a plan with 2 GB or more.
 - **`no space left on device`** — the disk is full. See [Image storage](/en/server/storage#how-much-disk-space-is-left).
 
+## The server won't start: "placeholder value from an example file"
+
+This line in `hooba logs backend` means `.env.prod` still contains placeholder passwords from an example file (`замените-на-…`, `change-me` and similar). Those examples are public, so the server refuses to start with them: anyone could use them to sign in as the owner. The installer always writes real passwords — this only happens when the file was put together by hand.
+
+The error lists which values to replace. Running `hooba install` again won't help: it keeps the passwords already in the file.
+
+1. On the server, generate a new random value — a separate one for each line:
+
+   ```bash
+   openssl rand -hex 32
+   ```
+
+2. Open the file and replace the placeholders after `=` in the `JWT_SECRET`, `SETUP_TOKEN`, `TURN_AUTH_SECRET` lines (only those named in the error). Save with Ctrl+O, Enter; exit with Ctrl+X:
+
+   ```bash
+   nano /opt/hooba/infra/docker/.env.prod
+   ```
+
+3. Recreate the containers:
+
+   ```bash
+   hooba repair
+   ```
+
+After replacing `JWT_SECRET`, all members will have to sign in again.
+
+If the error names `DATABASE_URL`, the placeholder is in `POSTGRES_PASSWORD`. The database password has to change inside the database too — otherwise the server can't connect to it. Put a new value from `openssl rand -hex 32` in place of `<new-password>`:
+
+```bash
+cd /opt/hooba && docker compose --env-file infra/docker/.env.prod -f infra/docker/docker-compose.prod.yml \
+  exec postgres psql -U postgres -c "ALTER USER postgres PASSWORD '<new-password>';"
+```
+
+The reply `ALTER ROLE` means it worked. Then put the same password into the `POSTGRES_PASSWORD` line in `.env.prod` and run `hooba repair`.
+
 ## The server doesn't come up after a VPS reboot
 
 Hooba starts by itself when the system boots. If the site didn't open after a reboot:
