@@ -44,7 +44,9 @@ First run `hooba voice-check`: the command asks you to join a voice channel, che
 2. **Voice container.** `coturn` should be running in `hooba status`. If it isn't — `hooba repair`, then `hooba logs coturn`.
 3. **The server was installed with a domain before November 2026.** Browsers may have been given the domain instead of the IP, resulting in no sound and no errors at all. Run `hooba update` and then `hooba repair`: the update alone isn't enough, only the second command replaces the address.
 4. **The server's IP changed** (for example, after a move). Run `hooba install` — it rewrites the voice address.
-5. **It doesn't work for only one member** — most likely their network or browser: they should allow the site to use the microphone and try another browser or mobile data.
+5. **Voice doesn't connect only for members on strict networks** (offices, some ISPs and mobile carriers), while it works for everyone else. In versions before November 2026, the voice fallback through TURN didn't work on any server. Update: `hooba update`.
+6. **The server is in a cloud** (AWS, Oracle Cloud, Yandex Cloud and the like) where the public IP isn't on the server itself. This is detected automatically, see [Ports and firewall](/en/server/ports#if-the-public-ip-isn-t-on-the-server-itself). If `hooba voice-check` says «IP … не найден на этом сервере» ("IP … not found on this server"), run `hooba repair`.
+7. **It doesn't work for only one member** — most likely their network or browser: they should allow the site to use the microphone and try another browser or mobile data.
 
 ::: tip Screen sharing on a phone
 Mobile browsers generally don't let websites share the screen: you can watch someone else's screen share from a phone, but your own has to be from a computer.

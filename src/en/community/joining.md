@@ -28,6 +28,8 @@ The desktop app has things the browser version doesn't: push-to-talk on a global
 
 ## No sound or voice won't connect
 
+While voice is connecting, grey dots bounce and the frame flickers in the "Голосовая связь" ("Voice connection") panel at the bottom left; once sound is flowing, the ping appears instead. This usually takes 1–3 seconds. On strict networks it can take up to half a minute: Hooba tries a fallback path on its own and shows "Напрямую не получилось — пробуем запасной путь" ("Direct connection failed — trying a fallback path"). Wait a moment, and if that doesn't help:
+
 - Check that the browser has allowed microphone access (the lock or camera icon in the address bar).
 - Try another network, such as mobile data. Some office and public networks block voice.
 - If it doesn't work for anyone, tell the server owner: the [ports](/en/server/ports) are most likely closed.

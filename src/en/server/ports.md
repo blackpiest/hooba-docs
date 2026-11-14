@@ -7,7 +7,7 @@
 | 80 | TCP | certificate issuance and renewal, redirect to https | the certificate won't be issued or renewed |
 | 443 | TCP | website, API, chat | the site won't open |
 | 3478 | UDP + TCP | voice: TURN/STUN | voice won't work for some members |
-| 5349 | TCP | voice over TLS — for strict networks (offices, some mobile carriers) | no voice on strict networks |
+| 5349 | TCP | voice over TLS — fallback for strict networks (offices, some ISPs and mobile carriers) | no voice on strict networks |
 | 40000–40100 | UDP + TCP | voice and screen sharing directly to the server | voice connects more slowly or doesn't work |
 | 50000–50100 | UDP | voice via relay (TURN) | voice won't work for members behind strict NAT |
 
@@ -19,6 +19,12 @@ A server can have **two** firewalls, and the ports must be open in both:
 
 1. **In your hosting panel** — called Firewall, Security groups or Access rules. Not every provider has one. Open the **inbound** ports from the table above. Hooba can't manage it — only you can.
 2. **On the server itself** — UFW. The installer offers to turn it on and open everything needed.
+
+## If the public IP isn't on the server itself
+
+Some providers (AWS, Oracle Cloud, Yandex Cloud and others) give the server only an internal address and forward the public IP to it from outside. To check: `ip -4 addr` doesn't show your public IP.
+
+You don't need to do anything. `hooba install`, `hooba update` and `hooba repair` detect this on their own and print a message starting with «Сервер за NAT хостинга…» ("server behind the provider's NAT"). The voice fallback (TURN) then runs on the internal address, while members are still given the public one. To check voice settings: `hooba voice-check`.
 
 ## UFW by hand
 
